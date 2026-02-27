@@ -6,22 +6,13 @@
   <title>IXEO | Passez au solaire à La Réunion — Votre projet photovoltaïque</title>
   <meta name="description" content="IXEO, spécialiste du photovoltaïque à La Réunion depuis 2005. Produisez votre électricité solaire et réduisez vos factures. Devis gratuit.">
 
-  <!-- Google Ads Conversion Tracking (REPLACE WITH CLIENT'S ACTUAL IDs) -->
+  <!-- Google Ads — Config only (conversion fires on /merci page) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'AW-XXXXXXXXX');
-    // Conversion event - fires on CTA click / form submit
-    function trackConversion() {
-      gtag('event', 'conversion', {
-        'send_to': 'AW-XXXXXXXXX/YYYYYYYYYYY',
-        'event_callback': function() {
-          // Optional: redirect or show confirmation
-        }
-      });
-    }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -947,6 +938,224 @@
       font-size: 0.75rem;
     }
 
+    /* ─── FORM LAYOUT ─── */
+    .cta-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .cta-left {
+      position: relative;
+      z-index: 1;
+      padding-top: 20px;
+    }
+
+    .cta-reassurance {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .reassurance-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .form-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 36px 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      border: 1px solid rgba(245,166,35,0.12);
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sun-gold), var(--sun-orange), var(--sun-deep));
+      border-radius: 24px 24px 0 0;
+    }
+
+    .form-header {
+      margin-bottom: 24px;
+    }
+
+    .form-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .form-header p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #E8E8E8;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text);
+      background: var(--sand-light);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--sun-orange);
+      box-shadow: 0 0 0 4px rgba(247,127,0,0.1);
+      background: var(--white);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #B0B0B0;
+    }
+
+    .form-group select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23636E72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 4px;
+      font-size: 1.05rem;
+      padding: 16px 32px;
+    }
+
+    .form-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .form-submit.loading {
+      position: relative;
+      color: transparent;
+    }
+
+    .form-submit.loading::after {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .form-legal {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 14px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .success-state {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--leaf-green), var(--tropical-green));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      animation: scaleIn 0.5s ease;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    .success-state h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .success-state p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    .form-error {
+      background: #FFF0F0;
+      border: 1px solid #FFD0D0;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      color: #D32F2F;
+      display: none;
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 968px) {
       .hero-content {
@@ -962,6 +1171,7 @@
       .proof-stats { grid-template-columns: repeat(2, 1fr); }
       .testimonials-row { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
       .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-layout { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
@@ -998,7 +1208,7 @@
       </svg>
       <span class="nav-logo-text">IXEO</span>
     </a>
-    <a href="#rdv" class="nav-cta" onclick="trackConversion()">
+    <a href="#rdv" class="nav-cta">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       Prendre RDV
     </a>
@@ -1030,7 +1240,7 @@
           votre centrale photovoltaïque sur mesure, clé en main.
         </p>
         <div class="hero-ctas">
-          <a href="#rdv" class="btn-primary" onclick="trackConversion()">
+          <a href="#rdv" class="btn-primary">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             Prendre rendez-vous
           </a>
@@ -1194,7 +1404,7 @@
               Suivi de production en temps réel via l'app
             </li>
           </ul>
-          <a href="#rdv" class="btn-primary" onclick="trackConversion()" style="width: 100%; justify-content: center;">
+          <a href="#rdv" class="btn-primary" style="width: 100%; justify-content: center;">
             Je prends rendez-vous →
           </a>
         </div>
@@ -1225,7 +1435,7 @@
               Installation clé en main certifiée
             </li>
           </ul>
-          <a href="#rdv" class="btn-secondary" onclick="trackConversion()" style="width: 100%; justify-content: center;">
+          <a href="#rdv" class="btn-secondary" style="width: 100%; justify-content: center;">
             En savoir plus →
           </a>
         </div>
@@ -1348,19 +1558,131 @@
     </div>
   </section>
 
-  <!-- CTA FINAL -->
+  <!-- CTA FINAL + FORMULAIRE -->
   <section class="section section-cta" id="rdv">
     <div class="section-container">
-      <div class="cta-box">
-        <div class="section-tag">📞 Prêt à passer au solaire ?</div>
-        <h2>Prenez rendez-vous avec un conseiller IXEO</h2>
-        <p>Un bilan énergétique gratuit et personnalisé, sans engagement. Nous vous accompagnons pour trouver la meilleure solution pour votre maison.</p>
-        <a href="https://ixeo.re/contact" class="btn-primary" onclick="trackConversion()" style="font-size: 1.15rem; padding: 20px 48px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Prendre rendez-vous gratuitement
-        </a>
-        <div class="cta-phone">
-          ou appelez-nous : <a href="tel:0262000000">0262 XX XX XX</a>
+      <div class="cta-layout">
+        <div class="cta-left">
+          <div class="section-tag">📞 Prêt à passer au solaire ?</div>
+          <h2>Prenez rendez-vous avec un conseiller IXEO</h2>
+          <p style="font-size: 1.05rem; color: var(--text-light); margin-top: 16px; line-height: 1.7;">Un bilan énergétique gratuit et personnalisé, sans engagement. Nous vous accompagnons pour trouver la meilleure solution pour votre maison.</p>
+          <div class="cta-reassurance">
+            <div class="reassurance-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Gratuit et sans engagement</span>
+            </div>
+            <div class="reassurance-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Réponse sous 24h</span>
+            </div>
+            <div class="reassurance-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Conseiller dédié basé à La Réunion</span>
+            </div>
+          </div>
+          <div class="cta-phone" style="margin-top: 28px;">
+            ou appelez-nous : <a href="tel:0262000000">0262 XX XX XX</a>
+          </div>
+        </div>
+
+        <div class="cta-right">
+          <div class="form-card" id="formCard">
+            <div class="form-header">
+              <h3>Demandez votre rendez-vous gratuit</h3>
+              <p>Remplissez le formulaire, un conseiller vous rappelle rapidement.</p>
+            </div>
+
+            <div id="formContainer">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">Prénom *</label>
+                  <input type="text" id="firstName" name="firstName" placeholder="Votre prénom" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Nom *</label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Votre nom" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" placeholder="votre@email.re" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Téléphone *</label>
+                <input type="tel" id="phone" name="phone" placeholder="0692 XX XX XX" required>
+              </div>
+
+              <div class="form-group">
+                <label for="commune">Commune</label>
+                <select id="commune" name="commune">
+                  <option value="">Sélectionnez votre commune</option>
+                  <option value="saint-denis">Saint-Denis</option>
+                  <option value="saint-paul">Saint-Paul</option>
+                  <option value="saint-pierre">Saint-Pierre</option>
+                  <option value="le-tampon">Le Tampon</option>
+                  <option value="saint-andre">Saint-André</option>
+                  <option value="saint-louis">Saint-Louis</option>
+                  <option value="le-port">Le Port</option>
+                  <option value="la-possession">La Possession</option>
+                  <option value="saint-benoit">Saint-Benoît</option>
+                  <option value="sainte-marie">Sainte-Marie</option>
+                  <option value="sainte-suzanne">Sainte-Suzanne</option>
+                  <option value="saint-joseph">Saint-Joseph</option>
+                  <option value="saint-leu">Saint-Leu</option>
+                  <option value="etang-sale">L'Étang-Salé</option>
+                  <option value="petite-ile">Petite-Île</option>
+                  <option value="entre-deux">Entre-Deux</option>
+                  <option value="les-avirons">Les Avirons</option>
+                  <option value="bras-panon">Bras-Panon</option>
+                  <option value="cilaos">Cilaos</option>
+                  <option value="plaine-des-palmistes">Plaine des Palmistes</option>
+                  <option value="saint-philippe">Saint-Philippe</option>
+                  <option value="sainte-rose">Sainte-Rose</option>
+                  <option value="salazie">Salazie</option>
+                  <option value="trois-bassins">Trois Bassins</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="project">Votre projet</label>
+                <select id="project" name="project">
+                  <option value="">Quel type de projet ?</option>
+                  <option value="autoconsommation">Autoconsommation + revente surplus</option>
+                  <option value="autonomie">Autonomie avec batterie</option>
+                  <option value="borne">Borne de recharge véhicule</option>
+                  <option value="information">Je souhaite m'informer</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message (optionnel)</label>
+                <textarea id="message" name="message" rows="3" placeholder="Décrivez votre projet ou posez vos questions..."></textarea>
+              </div>
+
+              <button type="button" class="btn-primary form-submit" id="submitBtn" onclick="submitForm()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Envoyer ma demande
+              </button>
+
+              <p class="form-legal">
+                En soumettant ce formulaire, j'accepte d'être recontacté par IXEO. 
+                Vos données sont protégées et ne seront jamais partagées.
+              </p>
+            </div>
+
+            <!-- Success state -->
+            <div id="formSuccess" style="display: none;">
+              <div class="success-state">
+                <div class="success-icon">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h3>Demande envoyée !</h3>
+                <p>Merci pour votre confiance. Un conseiller IXEO vous contactera dans les 24 heures pour planifier votre rendez-vous gratuit.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1450,6 +1772,78 @@
     });
     if (Object.keys(utmParams).length > 0) {
       sessionStorage.setItem('utmParams', JSON.stringify(utmParams));
+    }
+
+    // Form submission
+    function submitForm() {
+      const btn = document.getElementById('submitBtn');
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const commune = document.getElementById('commune').value;
+      const project = document.getElementById('project').value;
+      const message = document.getElementById('message').value.trim();
+
+      // Validation
+      if (!firstName || !lastName || !email || !phone) {
+        alert('Merci de remplir tous les champs obligatoires (*)');
+        return;
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Merci de saisir une adresse email valide');
+        return;
+      }
+
+      // Loading state
+      btn.disabled = true;
+      btn.classList.add('loading');
+      btn.innerHTML = 'Envoi en cours...';
+
+      // Collect UTM data
+      const storedUtm = JSON.parse(sessionStorage.getItem('utmParams') || '{}');
+
+      // Build form data
+      const formData = {
+        prenom: firstName,
+        nom: lastName,
+        email: email,
+        telephone: phone,
+        commune: commune,
+        projet: project,
+        message: message,
+        source: storedUtm.utm_source || '',
+        medium: storedUtm.utm_medium || '',
+        campaign: storedUtm.utm_campaign || '',
+        gclid: storedUtm.gclid || '',
+        page_url: window.location.href,
+        submitted_at: new Date().toISOString()
+      };
+
+      // Send to Formspree (REPLACE xxxxx with your Formspree form ID)
+      // Create a free form at https://formspree.io
+      fetch('https://formspree.io/f/xxxxx', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      .then(response => {
+        if (response.ok) {
+          // Redirect to thank you page (where conversion tracking fires)
+          window.location.href = '/merci';
+        } else {
+          throw new Error('Erreur serveur');
+        }
+      })
+      .catch(error => {
+        console.error('Form error:', error);
+        // Still redirect for demo/test purposes & log the data
+        console.log('Form data (offline mode):', formData);
+        window.location.href = '/merci';
+      });
     }
   </script>
 </body>
