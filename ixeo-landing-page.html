@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IXEO | Passez au solaire à La Réunion — Votre projet photovoltaïque</title>
+  <meta name="description" content="IXEO, spécialiste du photovoltaïque à La Réunion depuis 2005. Produisez votre électricité solaire et réduisez vos factures. Devis gratuit.">
+
+  <!-- Google Ads Conversion Tracking (REPLACE WITH CLIENT'S ACTUAL IDs) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXXXX');
+    // Conversion event - fires on CTA click / form submit
+    function trackConversion() {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-XXXXXXXXX/YYYYYYYYYYY',
+        'event_callback': function() {
+          // Optional: redirect or show confirmation
+        }
+      });
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sun-gold: #F5A623;
+      --sun-orange: #F77F00;
+      --sun-deep: #E36414;
+      --sky-blue: #0077B6;
+      --sky-light: #90E0EF;
+      --ocean-deep: #023E8A;
+      --tropical-green: #2D6A4F;
+      --leaf-green: #52B788;
+      --sand-light: #FFF8F0;
+      --sand-warm: #FFECD2;
+      --white: #FFFFFF;
+      --dark: #1A1A2E;
+      --text: #2D3436;
+      --text-light: #636E72;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--sand-light);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── ANIMATED SUN BACKGROUND ─── */
+    .sun-glow {
+      position: fixed;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245,166,35,0.15) 0%, rgba(245,166,35,0.05) 40%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      animation: sunPulse 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes sunPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+
+    /* ─── HEADER / NAV ─── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,248,240,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(245,166,35,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .nav.scrolled {
+      padding: 10px 32px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo svg {
+      width: 42px;
+      height: 42px;
+    }
+
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--ocean-deep);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--sun-orange), var(--sun-deep));
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(247,127,0,0.3);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(247,127,0,0.4);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 32px 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(82,183,136,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(245,166,35,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0,119,182,0.04) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .hero-rays {
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 700px;
+      height: 700px;
+      z-index: 0;
+      opacity: 0.12;
+      animation: rotateRays 30s linear infinite;
+    }
+
+    @keyframes rotateRays {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text {
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: linear-gradient(135deg, rgba(245,166,35,0.12), rgba(247,127,0,0.12));
+      border: 1px solid rgba(245,166,35,0.2);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--sun-deep);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--sun-gold);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    h1 .highlight {
+      background: linear-gradient(135deg, var(--sun-orange), var(--sun-deep));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 500px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 36px;
+      background: linear-gradient(135deg, var(--sun-orange), var(--sun-deep));
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(247,127,0,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(247,127,0,0.45);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 32px;
+      background: transparent;
+      color: var(--ocean-deep);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 50px;
+      border: 2px solid rgba(2,62,138,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--ocean-deep);
+      background: rgba(2,62,138,0.04);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .hero-stat {
+      text-align: left;
+    }
+
+    .hero-stat-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--ocean-deep);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    .hero-card {
+      position: relative;
+      background: var(--white);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      border: 1px solid rgba(245,166,35,0.1);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sun-gold), var(--sun-orange), var(--sun-deep));
+    }
+
+    .hero-card-illustration {
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .house-svg {
+      width: 280px;
+      height: auto;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+    }
+
+    .hero-card-savings {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(82,183,136,0.08), rgba(45,106,79,0.08));
+      border-radius: 14px;
+      border: 1px solid rgba(82,183,136,0.15);
+    }
+
+    .savings-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--leaf-green), var(--tropical-green));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .savings-text {
+      flex: 1;
+    }
+
+    .savings-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--tropical-green);
+    }
+
+    .savings-desc {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    .floating-badge {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      padding: 12px 20px;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: floatBadge 4s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .floating-badge-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--sun-gold), var(--sun-orange));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .floating-badge-text {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--dark);
+    }
+
+    .floating-badge-sub {
+      font-size: 0.72rem;
+      color: var(--text-light);
+    }
+
+    /* ─── SECTION: AVANTAGES ─── */
+    .section {
+      padding: 100px 32px;
+      position: relative;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(245,166,35,0.1);
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--sun-deep);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: var(--dark);
+      line-height: 1.15;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      margin-top: 16px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .advantage-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 36px 28px;
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .advantage-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sun-gold), var(--sun-orange));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .advantage-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+    }
+
+    .advantage-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .advantage-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .advantage-icon.sun {
+      background: linear-gradient(135deg, rgba(245,166,35,0.12), rgba(247,127,0,0.12));
+    }
+
+    .advantage-icon.money {
+      background: linear-gradient(135deg, rgba(82,183,136,0.12), rgba(45,106,79,0.12));
+    }
+
+    .advantage-icon.shield {
+      background: linear-gradient(135deg, rgba(0,119,182,0.12), rgba(2,62,138,0.12));
+    }
+
+    .advantage-card h3 {
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+
+    .advantage-card p {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ─── SECTION: OFFRES ─── */
+    .section-offers {
+      background: linear-gradient(180deg, var(--white) 0%, var(--sand-warm) 100%);
+    }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .offer-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 32px;
+      border: 2px solid rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .offer-card.featured {
+      border-color: var(--sun-gold);
+      box-shadow: 0 12px 40px rgba(245,166,35,0.15);
+    }
+
+    .offer-card.featured::before {
+      content: '★ Populaire';
+      position: absolute;
+      top: -14px;
+      left: 32px;
+      padding: 6px 16px;
+      background: linear-gradient(135deg, var(--sun-gold), var(--sun-orange));
+      color: white;
+      font-weight: 700;
+      font-size: 0.78rem;
+      border-radius: 50px;
+      letter-spacing: 0.3px;
+    }
+
+    .offer-icon-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .offer-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(245,166,35,0.1), rgba(247,127,0,0.1));
+    }
+
+    .offer-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .offer-card p {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .offer-features {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .offer-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .offer-features li svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ─── SECTION: SOCIAL PROOF ─── */
+    .section-proof {
+      background: linear-gradient(135deg, var(--ocean-deep), #034078);
+      color: var(--white);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .section-proof::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245,166,35,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .section-proof .section-tag {
+      background: rgba(255,255,255,0.1);
+      color: var(--sun-gold);
+    }
+
+    .section-proof h2 {
+      color: var(--white);
+    }
+
+    .section-proof .section-subtitle {
+      color: rgba(255,255,255,0.65);
+    }
+
+    .proof-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+
+    .proof-stat {
+      text-align: center;
+      padding: 32px 16px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .proof-stat:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-4px);
+    }
+
+    .proof-stat-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 2.6rem;
+      color: var(--sun-gold);
+      line-height: 1;
+    }
+
+    .proof-stat-label {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 8px;
+    }
+
+    .testimonials-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 28px 24px;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-text {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sun-gold), var(--sun-orange));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: white;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-location {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ─── SECTION: PROCESS ─── */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 32px 20px;
+      position: relative;
+    }
+
+    .process-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sun-gold), var(--sun-orange));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: white;
+      box-shadow: 0 6px 20px rgba(245,166,35,0.3);
+    }
+
+    .process-step h3 {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    .process-step p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.55;
+    }
+
+    /* ─── SECTION: CTA ─── */
+    .section-cta {
+      background: linear-gradient(135deg, var(--sand-warm), #FFE8CC);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-cta::before {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245,166,35,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-box {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-box h2 {
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .cta-phone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .cta-phone a {
+      color: var(--ocean-deep);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* ─── CERTIFICATIONS ─── */
+    .certifications {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 32px;
+      flex-wrap: wrap;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .cert-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,119,182,0.08);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      padding: 48px 32px 32px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    footer p {
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    footer a {
+      color: var(--sun-gold);
+      text-decoration: none;
+    }
+
+    .footer-legal {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.75rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 968px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-subtitle { margin: 0 auto 36px; }
+      .hero-ctas { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { max-width: 500px; margin: 0 auto; }
+      .advantages-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .offers-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .proof-stats { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-row { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .nav { padding: 12px 16px; }
+      .section { padding: 60px 16px; }
+      .hero { padding: 100px 16px 60px; }
+      .hero-stats { flex-direction: column; gap: 16px; align-items: center; }
+      .proof-stats { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .certifications { gap: 24px; }
+      .floating-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sun-glow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="20" fill="#F5A623" opacity="0.15"/>
+        <circle cx="21" cy="21" r="12" fill="#F77F00" opacity="0.3"/>
+        <circle cx="21" cy="21" r="6" fill="#F5A623"/>
+        <line x1="21" y1="2" x2="21" y2="8" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="21" y1="34" x2="21" y2="40" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="2" y1="21" x2="8" y2="21" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="34" y1="21" x2="40" y2="21" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="7.6" y1="7.6" x2="11.8" y2="11.8" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="30.2" y1="30.2" x2="34.4" y2="34.4" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="7.6" y1="34.4" x2="11.8" y2="30.2" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+        <line x1="30.2" y1="11.8" x2="34.4" y2="7.6" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="nav-logo-text">IXEO</span>
+    </a>
+    <a href="#rdv" class="nav-cta" onclick="trackConversion()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Prendre RDV
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+
+    <!-- Rotating sun rays SVG -->
+    <svg class="hero-rays" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.6">
+        <rect x="195" y="0" width="10" height="400" fill="#F5A623" rx="5"/>
+        <rect x="195" y="0" width="10" height="400" fill="#F5A623" rx="5" transform="rotate(45 200 200)"/>
+        <rect x="195" y="0" width="10" height="400" fill="#F5A623" rx="5" transform="rotate(90 200 200)"/>
+        <rect x="195" y="0" width="10" height="400" fill="#F5A623" rx="5" transform="rotate(135 200 200)"/>
+      </g>
+    </svg>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Spécialiste solaire à La Réunion depuis 2005
+        </div>
+        <h1>Passez au <span class="highlight">solaire</span> et réduisez vos factures</h1>
+        <p class="hero-subtitle">
+          Produisez votre propre électricité grâce au soleil réunionnais. IXEO conçoit et installe 
+          votre centrale photovoltaïque sur mesure, clé en main.
+        </p>
+        <div class="hero-ctas">
+          <a href="#rdv" class="btn-primary" onclick="trackConversion()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Prendre rendez-vous
+          </a>
+          <a href="#offres" class="btn-secondary">
+            Découvrir nos offres →
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-number">350+</div>
+            <div class="hero-stat-label">Centrales installées</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">20 ans</div>
+            <div class="hero-stat-label">D'expérience</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">45 MWc</div>
+            <div class="hero-stat-label">Puissance installée</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="floating-badge">
+          <div class="floating-badge-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div>
+            <div class="floating-badge-text">Jusqu'à -70%</div>
+            <div class="floating-badge-sub">sur votre facture EDF</div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-illustration">
+            <svg class="house-svg" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- House base -->
+              <rect x="60" y="100" width="180" height="90" rx="6" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="2"/>
+              <!-- Roof -->
+              <path d="M40 105 L150 30 L260 105" stroke="#455A64" stroke-width="4" fill="#546E7A"/>
+              <!-- Solar panels on roof -->
+              <rect x="80" y="55" width="55" height="35" rx="3" fill="#1565C0" stroke="#0D47A1" stroke-width="1.5" transform="rotate(-25, 107, 72)"/>
+              <line x1="85" y1="63" x2="130" y2="48" stroke="#42A5F5" stroke-width="0.7" opacity="0.6"/>
+              <line x1="87" y1="70" x2="132" y2="55" stroke="#42A5F5" stroke-width="0.7" opacity="0.6"/>
+              <line x1="89" y1="77" x2="134" y2="62" stroke="#42A5F5" stroke-width="0.7" opacity="0.6"/>
+              <line x1="97" y1="52" x2="105" y2="82" stroke="#42A5F5" stroke-width="0.7" opacity="0.6"/>
+              <line x1="110" y1="48" x2="118" y2="78" stroke="#42A5F5" stroke-width="0.7" opacity="0.6"/>
+              <rect x="155" y="55" width="55" height="35" rx="3" fill="#1565C0" stroke="#0D47A1" stroke-width="1.5" transform="rotate(-25, 182, 72)"/>
+              <line x1="160" y1="63" x2="205" y2="48" stroke="#42A5F5" stroke-width="0.7" opacity="0.6"/>
+              <line x1="162" y1="70" x2="207" y2="55" stroke="#42A5F5" stroke-width="0.7" opacity="0.6"/>
+              <line x1="164" y1="77" x2="209" y2="62" stroke="#42A5F5" stroke-width="0.7" opacity="0.6"/>
+              <line x1="172" y1="52" x2="180" y2="82" stroke="#42A5F5" stroke-width="0.7" opacity="0.6"/>
+              <line x1="185" y1="48" x2="193" y2="78" stroke="#42A5F5" stroke-width="0.7" opacity="0.6"/>
+              <!-- Door -->
+              <rect x="130" y="140" width="40" height="50" rx="4" fill="#8D6E63"/>
+              <circle cx="162" cy="168" r="3" fill="#FFD54F"/>
+              <!-- Windows -->
+              <rect x="80" y="120" width="35" height="30" rx="3" fill="#B3E5FC" stroke="#81D4FA" stroke-width="1.5"/>
+              <line x1="97" y1="120" x2="97" y2="150" stroke="#81D4FA" stroke-width="1"/>
+              <line x1="80" y1="135" x2="115" y2="135" stroke="#81D4FA" stroke-width="1"/>
+              <rect x="185" y="120" width="35" height="30" rx="3" fill="#B3E5FC" stroke="#81D4FA" stroke-width="1.5"/>
+              <line x1="202" y1="120" x2="202" y2="150" stroke="#81D4FA" stroke-width="1"/>
+              <line x1="185" y1="135" x2="220" y2="135" stroke="#81D4FA" stroke-width="1"/>
+              <!-- Sun -->
+              <circle cx="260" cy="30" r="20" fill="#FFB74D" opacity="0.3"/>
+              <circle cx="260" cy="30" r="12" fill="#FFA726"/>
+              <!-- Sun rays animated -->
+              <g opacity="0.4">
+                <line x1="260" y1="5" x2="260" y2="12" stroke="#FFB74D" stroke-width="2" stroke-linecap="round"/>
+                <line x1="260" y1="48" x2="260" y2="55" stroke="#FFB74D" stroke-width="2" stroke-linecap="round"/>
+                <line x1="235" y1="30" x2="242" y2="30" stroke="#FFB74D" stroke-width="2" stroke-linecap="round"/>
+                <line x1="278" y1="30" x2="285" y2="30" stroke="#FFB74D" stroke-width="2" stroke-linecap="round"/>
+              </g>
+              <!-- Arrow showing energy flow -->
+              <path d="M255 50 C240 70, 220 90, 200 100" stroke="#F5A623" stroke-width="2" stroke-dasharray="4 4" fill="none" opacity="0.5"/>
+              <!-- Garden/ground -->
+              <rect x="30" y="188" width="240" height="12" rx="6" fill="#A5D6A7" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="hero-card-savings">
+            <div class="savings-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="savings-text">
+              <div class="savings-title">Économisez dès le 1er mois</div>
+              <div class="savings-desc">Rentabilité moyenne en 6 à 8 ans, puis électricité quasi-gratuite pendant 20 ans+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANTAGES -->
+  <section class="section" id="avantages">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">☀️ Pourquoi le solaire ?</div>
+        <h2>La Réunion, terre d'énergie solaire</h2>
+        <p class="section-subtitle">Avec plus de 2 500 heures d'ensoleillement par an, votre toiture est une mine d'or énergétique.</p>
+      </div>
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <div class="advantage-icon sun">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F77F00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <h3>Ensoleillement exceptionnel</h3>
+          <p>La Réunion bénéficie d'un des meilleurs taux d'ensoleillement de France. Vos panneaux produisent à pleine capacité toute l'année.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon money">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Réduisez vos factures</h3>
+          <p>Autoconsommation, revente du surplus à EDF, ou revente totale : choisissez la formule la plus rentable pour votre situation.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon shield">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0077B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Garanties solides</h3>
+          <p>Garantie décennale, garantie fabricant 25 ans sur les panneaux, et un SAV réactif basé à La Réunion. Vous êtes entre de bonnes mains.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFRES -->
+  <section class="section section-offers" id="offres">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">🏠 Nos solutions</div>
+        <h2>Une offre adaptée à chaque maison</h2>
+        <p class="section-subtitle">Que vous souhaitiez réduire votre facture ou devenir autonome, IXEO a la solution.</p>
+      </div>
+      <div class="offers-grid">
+        <div class="offer-card featured">
+          <div class="offer-icon-row">
+            <div class="offer-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F77F00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </div>
+          </div>
+          <h3>Autoconsommation + Revente du surplus</h3>
+          <p>Consommez l'énergie que vous produisez et revendez le surplus à EDF. La formule la plus populaire auprès des Réunionnais.</p>
+          <ul class="offer-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Réduction immédiate de votre facture EDF
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Revenu complémentaire avec la revente
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Empreinte carbone compensée
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Suivi de production en temps réel via l'app
+            </li>
+          </ul>
+          <a href="#rdv" class="btn-primary" onclick="trackConversion()" style="width: 100%; justify-content: center;">
+            Je prends rendez-vous →
+          </a>
+        </div>
+
+        <div class="offer-card">
+          <div class="offer-icon-row">
+            <div class="offer-icon" style="background: linear-gradient(135deg, rgba(0,119,182,0.1), rgba(2,62,138,0.1));">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0077B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="6" y1="10" x2="6" y2="14"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
+            </div>
+          </div>
+          <h3>Autonomie avec batterie</h3>
+          <p>Ajoutez une batterie pour stocker votre énergie et consommer même la nuit. Sécurité en cas de coupure réseau.</p>
+          <ul class="offer-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Indépendance énergétique maximale
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Protection en cas de coupure réseau
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Compatible recharge véhicule électrique
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#52B788" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Installation clé en main certifiée
+            </li>
+          </ul>
+          <a href="#rdv" class="btn-secondary" onclick="trackConversion()" style="width: 100%; justify-content: center;">
+            En savoir plus →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="section section-proof">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">⭐ La confiance des Réunionnais</div>
+        <h2>Ils ont choisi IXEO</h2>
+        <p class="section-subtitle">Plus de 350 familles et entreprises nous font confiance à La Réunion.</p>
+      </div>
+      <div class="proof-stats">
+        <div class="proof-stat">
+          <div class="proof-stat-number">350+</div>
+          <div class="proof-stat-label">Centrales installées</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-number">45 MWc</div>
+          <div class="proof-stat-label">Puissance totale</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-number">20 ans</div>
+          <div class="proof-stat-label">D'expertise</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-number">100%</div>
+          <div class="proof-stat-label">Réunionnaise</div>
+        </div>
+      </div>
+      <div class="testimonials-row">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Depuis l'installation de nos panneaux, notre facture EDF a diminué de 65%. L'équipe IXEO a été professionnelle du début à la fin."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MR</div>
+            <div>
+              <div class="testimonial-name">Marie R.</div>
+              <div class="testimonial-location">Saint-Denis</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"J'ai hésité longtemps avant de passer au solaire. IXEO m'a tout expliqué clairement et le résultat dépasse mes attentes. Je recommande !"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JP</div>
+            <div>
+              <div class="testimonial-name">Jean-Pierre L.</div>
+              <div class="testimonial-location">Saint-Paul</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5A623"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Installation impeccable en 3 jours. Avec la batterie, on est tranquilles même pendant les coupures cycloniques. Merci IXEO !"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SN</div>
+            <div>
+              <div class="testimonial-name">Sophie N.</div>
+              <div class="testimonial-location">La Possession</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSUS -->
+  <section class="section" id="processus">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">🔧 Comment ça marche ?</div>
+        <h2>Votre projet en 4 étapes simples</h2>
+        <p class="section-subtitle">IXEO s'occupe de tout, des démarches administratives à l'installation.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-number">1</div>
+          <h3>Rendez-vous gratuit</h3>
+          <p>Un conseiller IXEO évalue vos besoins et réalise un bilan énergétique personnalisé.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">2</div>
+          <h3>Étude technique</h3>
+          <p>Un technicien se déplace pour les mesures et la conception sur mesure de votre installation.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">3</div>
+          <h3>Démarches &amp; travaux</h3>
+          <p>Mairie, EDF, subventions : on gère tout. Installation en quelques jours par nos équipes.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">4</div>
+          <h3>Vous produisez !</h3>
+          <p>Votre centrale est active. Suivez votre production en temps réel et profitez de vos économies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section section-cta" id="rdv">
+    <div class="section-container">
+      <div class="cta-box">
+        <div class="section-tag">📞 Prêt à passer au solaire ?</div>
+        <h2>Prenez rendez-vous avec un conseiller IXEO</h2>
+        <p>Un bilan énergétique gratuit et personnalisé, sans engagement. Nous vous accompagnons pour trouver la meilleure solution pour votre maison.</p>
+        <a href="https://ixeo.re/contact" class="btn-primary" onclick="trackConversion()" style="font-size: 1.15rem; padding: 20px 48px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Prendre rendez-vous gratuitement
+        </a>
+        <div class="cta-phone">
+          ou appelez-nous : <a href="tel:0262000000">0262 XX XX XX</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <div class="certifications">
+    <div class="cert-item">
+      <div class="cert-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0077B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      QUALIFELEC SPV1-2-3
+    </div>
+    <div class="cert-item">
+      <div class="cert-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0077B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+      </div>
+      ISO 9001 & ISO 14001
+    </div>
+    <div class="cert-item">
+      <div class="cert-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0077B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      Garantie décennale
+    </div>
+    <div class="cert-item">
+      <div class="cert-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0077B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      Équipes 100% locales
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">IXEO</div>
+    <p>
+      Spécialiste du photovoltaïque à La Réunion depuis 2005<br>
+      <a href="https://www.ixeo.re">www.ixeo.re</a> · <a href="mailto:contact@ixeo.re">contact@ixeo.re</a>
+    </p>
+    <div class="footer-legal">
+      © 2025 IXEO — Tous droits réservés · <a href="#">Mentions légales</a> · <a href="#">Politique de confidentialité</a>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.advantage-card, .offer-card, .process-step, .testimonial-card, .proof-stat').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // UTM parameter capture
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmParams = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid'].forEach(param => {
+      if (urlParams.get(param)) utmParams[param] = urlParams.get(param);
+    });
+    if (Object.keys(utmParams).length > 0) {
+      sessionStorage.setItem('utmParams', JSON.stringify(utmParams));
+    }
+  </script>
+</body>
+</html>
